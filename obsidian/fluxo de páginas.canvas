@@ -1,0 +1,23 @@
+{
+	"nodes":[
+		{"id":"1a6d499bb3bb6fac","x":-560,"y":-120,"width":250,"height":60,"type":"text","text":"home"},
+		{"id":"a5b3e595b65f089a","x":-100,"y":100,"width":250,"height":60,"type":"text","text":"médico"},
+		{"id":"c0413c60815b1698","x":-120,"y":-540,"width":250,"height":60,"type":"text","text":"paciente"},
+		{"id":"196131dd133d1ad4","x":300,"y":-700,"width":250,"height":60,"type":"text","text":"agendar consulta"},
+		{"id":"ebe442267eda5ec5","x":300,"y":-540,"width":250,"height":60,"type":"text","text":"minhas consultas"},
+		{"id":"7941f0a97f02026c","x":300,"y":-380,"width":250,"height":60,"type":"text","text":"editar dados"},
+		{"id":"2bbe881ffa65ada8","x":700,"y":-540,"width":250,"height":60,"type":"text","text":"prontuario"},
+		{"id":"ec851ee979e6711b","x":300,"y":20,"width":250,"height":60,"type":"text","text":"minhas consultas"},
+		{"id":"6783e934f8fec802","x":300,"y":160,"width":250,"height":60,"type":"text","text":"meus pacientes"}
+	],
+	"edges":[
+		{"id":"c6ee5ca286598536","fromNode":"1a6d499bb3bb6fac","fromSide":"right","toNode":"c0413c60815b1698","toSide":"left","label":"se for paciente"},
+		{"id":"6d485e2defda7acd","fromNode":"1a6d499bb3bb6fac","fromSide":"right","toNode":"a5b3e595b65f089a","toSide":"left","label":"se for médico"},
+		{"id":"6873dad9ff7cf0f0","fromNode":"c0413c60815b1698","fromSide":"right","toNode":"196131dd133d1ad4","toSide":"left"},
+		{"id":"ac8b7e1f51a6504f","fromNode":"c0413c60815b1698","fromSide":"right","toNode":"ebe442267eda5ec5","toSide":"left"},
+		{"id":"e30490a94ffdf1f8","fromNode":"c0413c60815b1698","fromSide":"right","toNode":"7941f0a97f02026c","toSide":"left"},
+		{"id":"e57701e9ee918fc5","fromNode":"ebe442267eda5ec5","fromSide":"right","toNode":"2bbe881ffa65ada8","toSide":"left"},
+		{"id":"5d1abe8a6d5b1fa8","fromNode":"a5b3e595b65f089a","fromSide":"right","toNode":"ec851ee979e6711b","toSide":"left"},
+		{"id":"8cead569f89f1ea4","fromNode":"a5b3e595b65f089a","fromSide":"right","toNode":"6783e934f8fec802","toSide":"left"}
+	]
+}
