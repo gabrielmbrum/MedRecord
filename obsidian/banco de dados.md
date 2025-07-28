@@ -37,7 +37,7 @@ CREATE TABLE consulta (
     crm VARCHAR(20) NOT NULL,
     cpf VARCHAR(14) NOT NULL,
     data_horario TIMESTAMP NOT NULL,
-    PRIMARY KEY (crm, cpf, horario),
+    PRIMARY KEY (crm, cpf, data_horario),
     FOREIGN KEY (crm) REFERENCES medico(crm) ON DELETE CASCADE,
     FOREIGN KEY (cpf) REFERENCES paciente(cpf) ON DELETE CASCADE
 );
@@ -51,13 +51,40 @@ CREATE TABLE prontuario (
     crm VARCHAR(20) NOT NULL,
     cpf VARCHAR(14) NOT NULL,
     data_horario_consulta TIMESTAMP NOT NULL,
-    FOREIGN KEY (crm, cpf, horario_consulta) 
-        REFERENCES consulta(crm, cpf, horario)
+    FOREIGN KEY (crm, cpf, data_horario_consulta) 
+        REFERENCES consulta(crm, cpf, data_horario)
+        ON DELETE CASCADE
+);
+
+-- Tabela Receituário
+CREATE TABLE receituario (
+	id SERIAL PRIMARY KEY,
+	medicamentos TEXT,
+	crm VARCHAR(20) NOT NULL,
+    cpf VARCHAR(14) NOT NULL,
+    data_horario_consulta TIMESTAMP NOT NULL,
+    FOREIGN KEY (crm, cpf, data_horario_consulta) 
+        REFERENCES consulta(crm, cpf, data_horario)
         ON DELETE CASCADE
 );
 
 -- Índices para melhorar performance nas consultas frequentes
 CREATE INDEX idx_prontuario_paciente ON prontuario(cpf);
 CREATE INDEX idx_prontuario_medico ON prontuario(crm);
-CREATE INDEX idx_prontuario_data ON prontuario(horario_consulta);
 ```
+
+## comandos úteis
+
+| Comando            | Descrição                        |
+| ------------------ | -------------------------------- |
+| `\l`               | Lista todos os bancos de dados   |
+| `\c nome_do_banco` | Conecta a um banco específico    |
+| `\dt`              | Lista tabelas do banco atual     |
+| `\du`              | Lista usuários e suas permissões |
+| `\q`               | Sai do terminal `psql`           |
+|                    |                                  |
+```
+
+psql -h localhost -U medrecord -d medrecord_db -W
+```
+
