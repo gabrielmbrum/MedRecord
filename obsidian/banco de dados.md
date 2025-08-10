@@ -32,6 +32,28 @@ CREATE TABLE paciente (
     sexo CHAR(1)
 );
 
+-- Tabela Usuário
+CREATE TABLE usuario (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,  -- Armazena o hash, não a senha em texto puro
+    role VARCHAR(20) NOT NULL CHECK (role IN ('medico', 'paciente', 'admin')),
+    crm VARCHAR(20) NULL,  -- FK opcional para médicos
+    cpf VARCHAR(14) NULL,  -- FK opcional para pacientes
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    last_login TIMESTAMP WITH TIME ZONE,
+    
+    -- Constraints para garantir integridade
+    CONSTRAINT fk_medico FOREIGN KEY (crm) REFERENCES medico(crm),
+    CONSTRAINT fk_paciente FOREIGN KEY (cpf) REFERENCES paciente(cpf),
+    CONSTRAINT chk_role_identity CHECK (
+        (role = 'medico' AND crm IS NOT NULL AND cpf IS NULL) OR
+        (role = 'paciente' AND cpf IS NOT NULL AND crm IS NULL) OR
+        (role = 'admin' AND crm IS NULL AND cpf IS NULL)
+    )
+);
+
 -- Tabela Consulta
 CREATE TABLE consulta (
     crm VARCHAR(20) NOT NULL,
