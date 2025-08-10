@@ -1,37 +1,24 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../core/auth/auth.service';
-import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { RouterModule } from '@angular/router';
+import { HeroComponent } from './components/hero/hero.component';
+//import { FeaturesComponent } from './components/features/features.component';
+import { TestimonialsComponent } from './components/testimonials/testimonials.component';
+import { CtaComponent } from './components/cta/cta.component';
 
 @Component({
+  selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterLink],
-  template: `
-    <div class="home-container">
-      <h1>Bem-vindo ao MedRecord</h1>
-      
-      <div *ngIf="authService.getCurrentUser(); else unauthenticated">
-        <p>Você está logado como: {{ authService.getCurrentUser()?.role }}</p>
-        <a routerLink="/{{ authService.getCurrentUser()?.role }}/dashboard">Ir para dashboard</a>
-        <button (click)="authService.logout()">Logout</button>
-      </div>
-      
-      <ng-template #unauthenticated>
-        <a routerLink="/auth/login" class="btn">Login</a>
-        <a routerLink="/auth/register" class="btn">Cadastre-se</a>
-      </ng-template>
-    </div>
-  `,
-  styles: [`
-    .home-container {
-      text-align: center;
-      padding: 2rem;
-    }
-    .btn {
-      margin: 0 1rem;
-    }
-  `]
+  imports: [
+    RouterModule,
+    HeroComponent,
+//    FeaturesComponent,
+    TestimonialsComponent,
+    CtaComponent
+  ],
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  constructor(public authService: AuthService) {}
+  // Lógica específica da página home pode ser adicionada aqui
+  // Ex: Dados para gráficos, últimas notícias, etc.
 }
