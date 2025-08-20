@@ -1,5 +1,1 @@
-# vacation-project
-
-this project was born from a wish of building a software to establish some knowledges and improve my developing skills.
-
-if everything goes like i expect, i will finally have a project fully documented :)
+this repo is a web application created by Ali Bouali [https://youtu.be/WuPa_XoWlJU?si=g93GidLYDSPdQA47], i will take notes while i build this app for studying and make this repo friendly to anyone. 
